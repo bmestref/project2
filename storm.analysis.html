@@ -209,3 +209,18 @@ p2 <- ggplot(data = head(eventype_injuries_filter,10), aes(x = EVTYPE, y = injur
 grid.arrange(p1, p2, top="Top deadly weather events in the US (1950-2011)")
 ```
 ![plot of chunk unnamed-chunk-11](figures/top_deadly_weather_events.png) 
+
+Economic impact of weather events
+---------------------------------
+
+The following plot shows the most severe weather event types with respect to
+economic cost that they have costed since 1950s.
+```{r}
+econ_loss_prop_filter <- head(econ_loss[order(econ_loss$prop_loss, decreasing = TRUE),c('EVTYPE','prop_loss')], 10)
+econ_loss_crop_filter <- head(econ_loss[order(econ_loss$crop_loss, decreasing = TRUE),c('EVTYPE','crop_loss')], 10)
+
+p1 <- ggplot(data = econ_loss_prop_filter, aes(x = EVTYPE, y = prop_loss)) + geom_bar(stat = 'identity') + labs(x = 'Event type', y = 'Porperty losses', title = 'Property losses as a function of the Event type') + coord_flip()
+p2 <- ggplot(data = head(econ_loss_crop_filter,10), aes(x = EVTYPE, y = crop_loss)) + geom_bar(stat = 'identity') + labs(x = 'Event type', y = 'Crop losses', title = 'Crop losses as a function of the Event type') + coord_flip()
+grid.arrange(p1, p2, top="Weather costs to the US economy (1950-2011)")
+```
+![plot of weather costs](figures/weather_costs.png) 
