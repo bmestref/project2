@@ -209,6 +209,7 @@ p2 <- ggplot(data = head(eventype_injuries_filter,10), aes(x = EVTYPE, y = injur
 grid.arrange(p1, p2, top="Top deadly weather events in the US (1950-2011)")
 ```
 ![plot of chunk unnamed-chunk-11](figures/top_deadly_weather_events.png) 
+
 Economic impact of weather events
 ---------------------------------
 
